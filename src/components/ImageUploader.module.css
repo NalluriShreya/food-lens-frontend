@@ -1,0 +1,234 @@
+.wrap {
+  width: 100%;
+}
+
+.card {
+  border: 1.5px dashed var(--border2);
+  border-radius: var(--r2);
+  background: var(--bg2);
+  transition: border-color 0.2s, background 0.2s;
+  overflow: hidden;
+  cursor: default;
+}
+
+.card:hover {
+  border-color: var(--accent-local);
+  background: rgba(124,245,192,0.03);
+}
+
+.hasValue {
+  border-style: solid;
+  border-color: rgba(124,245,192,0.3);
+}
+
+.inner {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.iconRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.iconBox {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent-local);
+}
+
+.reqBadge {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--danger);
+  background: var(--danger-dim);
+  padding: 3px 8px;
+  border-radius: 100px;
+}
+
+.text strong {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 3px;
+  font-family: 'Syne', sans-serif;
+}
+
+.text p {
+  font-size: 12px;
+  color: var(--text2);
+  line-height: 1.5;
+}
+
+.why {
+  display: block;
+  font-size: 11px;
+  color: var(--text3);
+  margin-top: 4px;
+  font-style: italic;
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+}
+
+.cameraBtn, .uploadBtn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  font-family: 'Syne', sans-serif;
+}
+
+.cameraBtn {
+  background: var(--accent-dim);
+  color: var(--accent-local);
+  border: 1px solid rgba(124,245,192,0.2);
+}
+.cameraBtn:hover { background: rgba(124,245,192,0.2); }
+
+.uploadBtn {
+  background: var(--bg3);
+  color: var(--text2);
+  border: 1px solid var(--border2);
+}
+.uploadBtn:hover { color: var(--text); background: var(--bg4); }
+
+/* Preview */
+.previewWrap {
+  position: relative;
+  aspect-ratio: 4/3;
+  overflow: hidden;
+}
+
+.preview {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.previewOverlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.35);
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 10px;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+.previewWrap:hover .previewOverlay { opacity: 1; }
+
+.checkIcon {
+  color: var(--success);
+  filter: drop-shadow(0 0 4px rgba(85,239,196,0.5));
+}
+
+.clearBtn {
+  background: rgba(0,0,0,0.6);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 6px;
+  color: #fff;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+/* Camera */
+.cameraWrap {
+  position: relative;
+  border-radius: var(--r2);
+  overflow: hidden;
+  aspect-ratio: 4/3;
+  background: #000;
+}
+
+.video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.cameraOverlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+.viewfinder {
+  width: 180px;
+  height: 140px;
+  border: 2px solid rgba(255,255,255,0.5);
+  border-radius: 12px;
+  flex: 1;
+  margin: 20px 0;
+  box-shadow: 0 0 0 2000px rgba(0,0,0,0.4);
+}
+
+.cameraActions {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+  justify-content: center;
+  padding-bottom: 8px;
+}
+
+.cancelBtn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(0,0,0,0.5);
+  border: 1px solid rgba(255,255,255,0.2);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.captureBtn {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.9);
+  border: 3px solid #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 0 0 4px rgba(255,255,255,0.3);
+}
+
+.captureInner {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: #fff;
+}
+.captureBtn:active .captureInner { background: #ddd; }

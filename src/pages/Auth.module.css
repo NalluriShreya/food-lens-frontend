@@ -1,0 +1,150 @@
+.wrap {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  position: relative;
+  overflow: hidden;
+}
+
+.glow1 {
+  position: absolute;
+  top: -200px;
+  left: -200px;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(124,245,192,0.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.glow2 {
+  position: absolute;
+  bottom: -200px;
+  right: -100px;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(162,155,254,0.05) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.card {
+  width: 100%;
+  max-width: 440px;
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  padding: 48px 40px;
+  position: relative;
+  z-index: 1;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 40px;
+  font-family: 'Syne', sans-serif;
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--accent);
+}
+
+.logoIcon {
+  width: 36px;
+  height: 36px;
+  background: var(--accent-dim);
+  border: 1px solid rgba(124,245,192,0.2);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent);
+}
+
+.header {
+  margin-bottom: 32px;
+}
+
+.header h1 {
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--text);
+  margin-bottom: 6px;
+}
+
+.header p {
+  font-size: 14px;
+  color: var(--text2);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.field label {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text2);
+  letter-spacing: 0.02em;
+}
+
+.pwWrap {
+  position: relative;
+}
+
+.pwWrap input {
+  padding-right: 44px;
+}
+
+.pwToggle {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  color: var(--text3);
+  padding: 4px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+}
+.pwToggle:hover { color: var(--text2); }
+
+.submitBtn {
+  background: var(--accent);
+  color: #0a0a0f;
+  padding: 14px;
+  border-radius: var(--r);
+  font-family: 'Syne', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 8px;
+}
+.submitBtn:hover { background: var(--accent2); }
+.submitBtn:disabled { opacity: 0.7; cursor: not-allowed; }
+
+.switchLink {
+  text-align: center;
+  margin-top: 28px;
+  font-size: 14px;
+  color: var(--text2);
+}
+.switchLink a {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 500;
+}
+.switchLink a:hover { text-decoration: underline; }
