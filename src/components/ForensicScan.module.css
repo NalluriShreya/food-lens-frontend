@@ -51,10 +51,97 @@
   min-width: 4px;
 }
 
+/* ── Section labels ──────────────────────────────────────── */
+.sectionLabel {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border);
+}
+
+.sectionLabel span:first-child {
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text2);
+  font-family: 'Syne', sans-serif;
+}
+
+.sectionSub {
+  font-size: 11px;
+  color: var(--text3);
+  font-style: italic;
+}
+
+/* ── Core images (3-column) ──────────────────────────────── */
 .inputGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
   gap: 16px;
+}
+
+/* ── Packaging images (2-column) ─────────────────────────── */
+.inputGrid2 {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+  align-items: stretch;
+}
+
+/* ── Auto-extraction banner ──────────────────────────────── */
+.autoBanner {
+  background: linear-gradient(135deg, rgba(116,185,255,0.07), rgba(124,245,192,0.05));
+  border: 1px solid rgba(116,185,255,0.18);
+  border-radius: var(--r2);
+  padding: 14px 16px;
+}
+
+.autoTitle {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--info);
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  margin-bottom: 12px;
+  font-family: 'Syne', sans-serif;
+}
+
+.autoChips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.autoChip {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 6px 10px;
+}
+
+.autoChipIcon {
+  font-size: 14px;
+  line-height: 1;
+}
+
+.autoChipLabel {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.autoChipNote {
+  font-size: 10px;
+  color: var(--text3);
+  font-style: italic;
 }
 
 .analyzeBtn {
@@ -180,6 +267,24 @@
   margin-bottom: 16px;
   display: flex;
   align-items: center;
+  gap: 8px;
+}
+
+.aiExtractedBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--info);
+  background: rgba(116,185,255,0.1);
+  border: 1px solid rgba(116,185,255,0.18);
+  border-radius: 100px;
+  padding: 2px 8px;
+  text-transform: none;
+  letter-spacing: 0;
+  font-style: italic;
+  margin-left: auto;
 }
 
 .scoreGrid {

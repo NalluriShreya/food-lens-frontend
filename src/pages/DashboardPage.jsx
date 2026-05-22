@@ -61,23 +61,11 @@ export default function DashboardPage() {
 
       {/* Main content */}
       <main className={styles.main}>
-        {/* Mobile header */}
+        {/* Mobile header — brand + avatar only */}
         <div className={styles.mobileHeader}>
           <div className={styles.brand} style={{ gap: 8 }}>
             <div className={styles.brandIcon}><Zap size={16} /></div>
             <span style={{ fontSize: 18 }}>FoodLens</span>
-          </div>
-          <div className={styles.mobileTabs}>
-            {TABS.map(t => (
-              <button
-                key={t.id}
-                className={`${styles.mobileTab} ${tab === t.id ? styles.mobileTabActive : ''}`}
-                style={{ '--tab-color': t.color }}
-                onClick={() => setTab(t.id)}
-              >
-                <t.icon size={18} />
-              </button>
-            ))}
           </div>
           <Link to="/profile">
             <div className={styles.avatar} style={{ width: 32, height: 32, fontSize: 14 }}>
@@ -102,6 +90,23 @@ export default function DashboardPage() {
           </AnimatePresence>
         </div>
       </main>
+
+      {/* Bottom nav — mobile only */}
+      <nav className={styles.bottomNav}>
+        <div className={styles.bottomNavInner}>
+          {TABS.map(t => (
+            <button
+              key={t.id}
+              className={`${styles.bottomNavBtn} ${tab === t.id ? styles.bottomNavActive : ''}`}
+              style={{ '--tab-color': t.color }}
+              onClick={() => setTab(t.id)}
+            >
+              <t.icon size={20} />
+              <span>{t.label}</span>
+            </button>
+          ))}
+        </div>
+      </nav>
     </div>
   )
 }

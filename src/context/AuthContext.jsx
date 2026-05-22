@@ -1,4 +1,5 @@
 import { createContext, useContext, useState, useEffect } from 'react'
+import { auth } from '../utils/api'
 
 const AuthContext = createContext(null)
 
@@ -9,7 +10,19 @@ export function AuthProvider({ children }) {
   useEffect(() => {
     const saved = localStorage.getItem('foodlens_user')
     if (saved) {
-      try { setUser(JSON.parse(saved)) } catch {}
+      try {
+        const parsed = JSON.parse(saved)
+        setUser(parsed)
+        // Re-fetch fresh profile in the background so scan_count etc. are current
+        if (parsed?._id) {
+          auth.getProfile(parsed._id)
+            .then(res => {
+              setUser(res.data)
+              localStorage.setItem('foodlens_user', JSON.stringify(res.data))
+            })
+            .catch(() => {}) // silently ignore — stale cache is still usable
+        }
+      } catch {}
     }
     setLoading(false)
   }, [])

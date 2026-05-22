@@ -164,18 +164,81 @@
   z-index: 10;
 }
 
-.mobileTabs {
-  display: flex;
-  gap: 4px;
+/* Bottom nav bar — mobile only */
+.bottomNav {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: var(--bg2);
+  border-top: 1px solid var(--border);
+
+  /*
+   * Stacked safe-area strategy:
+   *   1. env(safe-area-inset-bottom) — iPhone home indicator & Android gesture bar
+   *   2. Extra 4px cushion so the bar never feels flush against the OS chrome
+   * Falls back to 12px on devices that don't support env().
+   */
+  padding: 0 8px calc(env(safe-area-inset-bottom, 0px) + 4px);
 }
 
-.mobileTab {
-  padding: 8px 12px;
-  border-radius: 8px;
+.bottomNavInner {
+  display: flex;
+  align-items: stretch;
+  justify-content: space-around;
+}
+
+.bottomNavBtn {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  /* 
+   * 12px top + 10px bottom gives the tap target enough height.
+   * Bottom padding is intentionally 0 here — the nav's own
+   * padding-bottom (safe-area + cushion) handles the OS gap.
+   */
+  padding: 12px 0 10px;
+  min-height: 56px;
+  font-size: 10px;
+  font-weight: 600;
+  font-family: 'Syne', sans-serif;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
   color: var(--text3);
   background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: color 0.18s;
+  position: relative;
+  /* Minimum 44×44 tap target recommended by Apple & Google */
+  -webkit-tap-highlight-color: transparent;
 }
-.mobileTabActive { background: var(--bg3); color: var(--tab-color); }
+
+.bottomNavBtn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 20%;
+  right: 20%;
+  height: 2px;
+  border-radius: 0 0 2px 2px;
+  background: var(--tab-color);
+  opacity: 0;
+  transition: opacity 0.18s;
+}
+
+.bottomNavActive {
+  color: var(--tab-color);
+}
+
+.bottomNavActive::before {
+  opacity: 1;
+}
 
 .contentWrap {
   flex: 1;
@@ -187,5 +250,26 @@
 @media (max-width: 768px) {
   .sidebar { display: none; }
   .mobileHeader { display: flex; }
-  .contentWrap { padding: 24px 16px; }
+  .bottomNav { display: block; }
+  .contentWrap {
+    padding: 24px 16px;
+    /*
+     * Push content above the bottom nav.
+     * 56px  = min-height of the nav buttons
+     * 4px   = cushion above OS chrome
+     * env() = iPhone home indicator / Android gesture bar height
+     * Extra 8px breathing room so the last card doesn't feel clipped.
+     */
+    padding-bottom: calc(56px + env(safe-area-inset-bottom, 0px) + 12px);
+  }
+}
+
+/* Android 3-button nav: no safe-area env support, needs a fixed offset */
+@media (max-width: 768px) and (display-mode: browser) {
+  .bottomNav {
+    padding-bottom: 12px;
+  }
+  .contentWrap {
+    padding-bottom: 80px;
+  }
 }

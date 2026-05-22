@@ -4,6 +4,7 @@ import { Leaf, Camera, Upload, Sparkles, Clock, Thermometer, AlertTriangle, Chec
 import toast from 'react-hot-toast'
 import ImageUploader from '../components/ImageUploader'
 import { scans } from '../utils/api'
+import { useAuth } from '../context/AuthContext'
 import styles from './FreshnessScan.module.css'
 
 const STATUS_CONFIG = {
@@ -14,6 +15,7 @@ const STATUS_CONFIG = {
 }
 
 export default function FreshnessScan({ userId }) {
+  const { user, updateUser } = useAuth()
   const [image, setImage] = useState(null)
   const [loading, setLoading] = useState(false)
   const [result, setResult] = useState(null)
@@ -25,6 +27,8 @@ export default function FreshnessScan({ userId }) {
     try {
       const res = await scans.freshness({ user_id: userId, image_base64: image })
       setResult(res.data)
+      // Keep local user in sync with the scan_count the backend just incremented
+      if (user) updateUser({ ...user, scan_count: (user.scan_count || 0) + 1 })
     } catch (err) {
       toast.error(err.response?.data?.detail || 'Analysis failed. Try again.')
     } finally {
