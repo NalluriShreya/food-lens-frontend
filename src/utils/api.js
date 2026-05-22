@@ -1,6 +1,14 @@
 import axios from 'axios'
 
-const API = axios.create({ baseURL: '/api' })
+// Use backend URL from env, fallback to relative path for dev
+const baseURL = import.meta.env.VITE_BACKEND_URL 
+  ? `${import.meta.env.VITE_BACKEND_URL}/api` 
+  : '/api'
+
+const API = axios.create({ 
+  baseURL,
+  timeout: 30000,           // optional: prevent long hangs
+})
 
 export const auth = {
   register: (data) => API.post('/auth/register', data),
